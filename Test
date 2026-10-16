@@ -1,3 +1,7 @@
-where.exe python
-conda --version
-Get-ChildItem "$env:LOCALAPPDATA\Programs\Python","$HOME\anaconda3","$HOME\miniconda3","C:\ProgramData\Anaconda3","C:\Program Files\Python*" -Filter python.exe -Recurse -ErrorAction SilentlyContinue | Select-Object -First 5 FullName
+python -m venv $HOME\venvs\build
+& $HOME\venvs\build\Scripts\Activate.ps1
+pip install build
+
+cd C:\Users\ssenp\repos\f_classic_specialty_clv
+python -m build --sdist
+tar -tzf dist\classic_specialty_ltv-10.0.0.tar.gz | Select-Object -First 5
