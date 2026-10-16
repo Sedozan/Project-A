@@ -1,9 +1,0 @@
-base = "Files/data/classic_spl_ltv/prod/feature/B-3046295/eltv_pipeline"
-
-lb = spark.read.parquet(f"{base}/core/ltv_base")
-lb.groupBy("drv_line_pt").count().orderBy("drv_line_pt").show()
-
-for s in ["core/ltv_base", "core/legacy_ifs",
-          "retention/preprocess_data_train", "retention/preprocess_data_score"]:
-    df = spark.read.parquet(f"{base}/{s}")
-    print(s, df.count(), len(df.columns))
